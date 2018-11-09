@@ -1,8 +1,20 @@
-const http = require('http');
-const requestHandle = require('./routes');
+const express = require('express');
 
-const server = http.createServer(requestHandle);
+const app = express();
 
-server.listen(3000, function() {
-    console.log("Server has started...");
+// app.use((req, res, next) => {
+//     console.log('Always run.');
+//     next();
+// });
+
+app.use('/users', (req, res, next) => {
+    console.log(req.url);
+    res.send('<p>Second exercise with express.js, listening requests from "/users"</p>');
 });
+
+app.use('/', (req, res, next) => {
+    console.log(req.url);
+    res.send('<p>Second exercise with express.js, listening requests from "/"</p>');
+});
+
+app.listen(3000);
