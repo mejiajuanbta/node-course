@@ -1,20 +1,13 @@
 const express = require('express');
+const path = require('path');
+const usersRouter = require('./routes/users');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-// app.use((req, res, next) => {
-//     console.log('Always run.');
-//     next();
-// });
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'pulbic')));
 
-app.use('/users', (req, res, next) => {
-    console.log(req.url);
-    res.send('<p>Second exercise with express.js, listening requests from "/users"</p>');
-});
-
-app.use('/', (req, res, next) => {
-    console.log(req.url);
-    res.send('<p>Second exercise with express.js, listening requests from "/"</p>');
-});
+app.use('/users', usersRouter);
 
 app.listen(3000);
