@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
 const usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
 const bodyParser = require('body-parser');
-const rootDir = require('./util/path');
+// const rootDir = require('./util/path');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter.router);
+app.use('/products', productsRouter.router);
 
 app.use('/', function(req, res, next) {
     // res.sendFile(path.join(rootDir, 'views', 'home.html'));
