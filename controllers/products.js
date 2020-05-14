@@ -7,7 +7,7 @@ postAddProduct = (req, res, next) => {
 }
 
 getFetchAll = (req, res, next) => {
-    Product.fetchAll((products) =>{
+    Product.fetchAll((products) => {
         res.render('products', { pageTitle: 'Product list', productList: products });
     });
 }
