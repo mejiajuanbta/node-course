@@ -1,0 +1,13 @@
+extends layouts/layout.pug
+
+block styles
+    link(rel="stylesheet" type="text/css" media="screen" href="/main.css")
+block content
+    h3 Product list...
+    if productList.length > 0
+        ul
+            each prod in productList
+                li #{prod.name}
+    else
+        p No products found
+    a(href="/") To Home 
